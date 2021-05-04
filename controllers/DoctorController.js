@@ -24,14 +24,25 @@ module.exports = {
       async index(request, response) {
         const {id} = request.params;
 
-        const doctor = await Doctor.findByPk(id)
+        if(typeof(id === Number)){
+            const doctor = await Doctor.findByPk(id)
         .catch((error) => {
             return res.status(500).json({
                 error_point: 'Doctor index.',
                 message: 'Error trying to get a doctor.',
                 error: error,
             });
-        }); // Error for accesing the database.
+        });
+        }else{
+            return res.status(500).json({
+                error_point: 'Doctor index.',
+                message: 'undefined id',
+                error: error,
+            });
+        }
+        
+
+      // Error for accesing the database.
 
         if (!doctor) {
             return res.status(400).json({
