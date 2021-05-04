@@ -7,9 +7,14 @@ const utils = require("../utils");
 module.exports = {
   async getDoctorAppointments(request, response) {
     const { id: doctor_id } = request.params;
-    Appointment.findAll({
-      where: { doctor_id },
-    })
+
+    if (!utils.verifyId(doctor_id)) {
+      return response
+        .status(401)
+        .json({ message: "The id sent is not valid." });
+    }
+
+    Appointment.findByPk(doctor_id)
       .then((appointments) => {
         return response.status(200).json(appointments);
       })
@@ -25,11 +30,37 @@ module.exports = {
     const { id: doctor_id } = request.params;
     const { user, appointment } = request.body;
 
+    if (!utils.verifyId(doctor_id)) {
+      return response
+        .status(401)
+        .json({ message: "The id sent is not valid." });
+    }
+
+    const { first_name, ...userRest } = user;
+    if (!utils.verifyObject(userRest)) {
+      return response
+        .status(401)
+        .json({ message: "The information sent is not valid." });
+    }
+
+    if (!utils.verifyObject(appointment)) {
+      return response
+        .status(401)
+        .json({ message: "The information sent is not valid." });
+    }
+
     const doctor = await Doctor.findOne(doctor_id);
 
+    const { first_name, doctorRest } = doctor;
+    if (!utils.verifyObject(doctorRest)) {
+      return response
+        .status(401)
+        .json({ message: "We could not find the doctor specified." });
+    }
+
     const templateData = {
-      user,
-      doctor,
+      user: utils.prepareObjectData(user),
+      doctor: utils.prepareObjectData(doctor),
       appointment,
     };
 
@@ -43,7 +74,7 @@ module.exports = {
 
     const mailOptions = {
       from: "nodemailer.simplon@gmail.com",
-      to: doctor.mail,
+      to: templateData.doctor.mail,
       subject: "New Appointment Request 🎉",
       text: utils.renderTemplate(templateData),
     };
