@@ -37,6 +37,7 @@
    * [Bdd](https://example.com): Sqlite 3
    * [Library Sequelise](https://example.com): 
    * [Library Sequelise CLI](https://www.npmjs.com/package/sequelize-cli): 
+   * [Library Nodemailer](https://nodemailer.com/about/):
    * [Jest](https://jestjs.io/fr/): 
 
     # NodeJs -- a JavaScript runtime built on Chrome's V8 JavaScript engine
@@ -73,8 +74,8 @@ Un package manager, où gestionnaire de paquet en français est un outil permett
     npx pour ajouter les packages 
     npx -- execute npm package binaries
 
-nodemailer pour simplifier l'envoie des mails : yarn add nodemailer (équivaut à : npm install nodemailer)
-
+Nodemailer pour simplifier l'envoie des mails : yarn add nodemailer (équivaut à : npm install nodemailer)
+Nodemailer est un module node js qui permet d’envoyer des emails.
 
 
 ## 💻 3. Installation
