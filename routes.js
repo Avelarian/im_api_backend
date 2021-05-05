@@ -9,7 +9,7 @@ routes.get("/", (_request, response) => {
 });
 
 /** DOCTOR ROUTES */
-routes.get('/doctor/:id/appointments', DoctorController.getDoctorAppointments)
-routes.post('/appointments', DoctorController.requestAppointment)
+routes.get("/doctors/:id/appointments", DoctorController.getDoctorAppointments);
+routes.post("/doctors/:id/appointments", DoctorController.requestAppointment);
 
 module.exports = routes
