@@ -1,6 +1,6 @@
 const express = require("express");
 
-const DoctorController = require("./controllers/DoctorController");
+const DoctorAppointmentsController = require("./controllers/DoctorAppointmentsController");
 
 const routes = express.Router();
 
@@ -9,7 +9,7 @@ routes.get("/", (_request, response) => {
 });
 
 /** DOCTOR ROUTES */
-routes.get("/doctors/:id/appointments", DoctorController.getDoctorAppointments);
-routes.post("/doctors/:id/appointments", DoctorController.requestAppointment);
+routes.get("/doctors/:id/appointments", DoctorAppointmentsController.list);
+routes.post("/doctors/:id/appointments", DoctorAppointmentsController.store);
 
 module.exports = routes

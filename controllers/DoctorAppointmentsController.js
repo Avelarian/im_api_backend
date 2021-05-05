@@ -5,7 +5,7 @@ const Appointment = require("../models/Appointment");
 const utils = require("../utils");
 
 module.exports = {
-  async getDoctorAppointments(request, response) {
+  async list(request, response) {
     const { id: doctor_id } = request.params;
 
     if (!utils.verifyId(doctor_id)) {
@@ -26,7 +26,7 @@ module.exports = {
         });
       });
   },
-  async requestAppointment(request, response) {
+  async store(request, response) {
     const { id: doctor_id } = request.params;
     const { user, appointment } = request.body;
 
