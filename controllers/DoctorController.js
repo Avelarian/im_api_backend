@@ -14,7 +14,7 @@ module.exports = {
         .json({ message: "The id sent is not valid." });
     }
 
-    Appointment.findByPk(doctor_id)
+    Appointment.findAll({ where: { doctor_id } })
       .then((appointments) => {
         return response.status(200).json(appointments);
       })
@@ -36,23 +36,23 @@ module.exports = {
         .json({ message: "The id sent is not valid." });
     }
 
-    const { first_name, ...userRest } = user;
-    if (!utils.verifyObject(userRest)) {
+    const { first_name: user_first_name, ...userRest } = user;
+    if (!utils.verifyObjectKeys(userRest)) {
       return response
         .status(401)
         .json({ message: "The information sent is not valid." });
     }
 
-    if (!utils.verifyObject(appointment)) {
+    if (!utils.verifyObjectKeys(appointment)) {
       return response
         .status(401)
         .json({ message: "The information sent is not valid." });
     }
 
-    const doctor = await Doctor.findOne(doctor_id);
+    const doctor = (await Doctor.findByPk(doctor_id)).dataValues;
 
-    const { first_name, doctorRest } = doctor;
-    if (!utils.verifyObject(doctorRest)) {
+    const { first_name: doctor_first_name, ...doctorRest } = doctor;
+    if (!utils.verifyObjectKeys(doctorRest)) {
       return response
         .status(401)
         .json({ message: "We could not find the doctor specified." });
@@ -72,27 +72,33 @@ module.exports = {
       },
     });
 
-    const mailOptions = {
-      from: "nodemailer.simplon@gmail.com",
-      to: templateData.doctor.mail,
-      subject: "New Appointment Request 🎉",
-      text: utils.renderTemplate(templateData),
-    };
+    const templateSender = transporter.templateSender(
+      {
+        subject: "New Appointment Request 🎉",
+        html: utils.renderTemplate(templateData),
+      },
+      {
+        from: "nodemailer.simplon@gmail.com",
+      }
+    );
 
-    await transporter
-      .sendMail(mailOptions)
-      .then(async (info) => {
-        console.log(info);
-        return response
-          .status(200)
-          .json({ message: "Appointment requested successfully." });
-      })
-      .catch((error) => {
-        console.log(error);
-        return response.status(500).json({
-          error:
-            "We could not request the appointment. Please, try again later.",
-        });
-      });
+    await templateSender(
+      { to: templateData.doctor.mail },
+      {},
+      (error, info) => {
+        if (error) {
+          console.log(error);
+          return response.status(500).json({
+            error:
+              "We could not request the appointment. Please, try again later.",
+          });
+        } else {
+          console.log(info);
+          return response
+            .status(200)
+            .json({ message: "Appointment requested successfully." });
+        }
+      }
+    );
   },
 };
