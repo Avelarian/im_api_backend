@@ -105,19 +105,23 @@ https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
 
 ## 🕺 Contribute
 
+You can contribute at this project.
 
 
-
-
-
-
-
-
+## Steps of this project :rocket: :rocket: :rocket:
 Etapes du projet :
 Installer YARN 
 
 Utiliser YARN
-yarn init    pour initialiser le projet sur Node
+**yarn init**    pour initialiser le projet sur Node
 
+**yarn test**    exécute des tests unitaires.
+**yarn start**   pour démarrer l'application localement.
+**yarn build**   pour créer un déploiement de production.
+
+
+## Contact
+[g-list-item attributes="class:list-group-item"]
+        [g-link url="https://www.magalierambla.com/" icon="envelope-o" icon_type="fontawesome"][/g-link]
 
 
