@@ -5,7 +5,7 @@ const path = require("path");
 const mustache = require("mustache");
 
 const template = readFileSync(
-  path.dirname(__dirname, "../templates/mail.mustache")
+  path.join(__dirname, "../templates/mail.mustache")
 ).toString();
 
 function renderTemplate(template) {
@@ -48,8 +48,9 @@ function prepareObjectData(object) {
   let newObject = {};
   const keys = Object.keys(object);
   for (const key of keys) {
-    if (object[key]) {
+    if (object[key] && typeof object[key] === "string") {
       newObject = {
+        ...newObject,
         [key]: object[key].trim(),
       };
     }

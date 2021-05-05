@@ -354,16 +354,16 @@
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td>
-                        <h4>Hello Doctor {doctor.last_name},</h4>
+                        <h4>Hello Doctor {{doctor.last_name}},</h4>
                         <p>You received a new appointment request from: </p>
-                        <p><strong>M. {user.last_name}</strong></p>
+                        <p><strong>M. {{user.last_name}}</strong></p>
                         <p><u>Contact's info:</u></p>
-                        <h5>{user.mail}</h5>
-                        <h5>{user.phone_number}</h5>
+                        <h5>{{user.mail}}</h5>
+                        <h5>{{user.phone_number}}</h5>
                         <br>
                         <p><u>Appointment's info:</u></p>
-                        <h5>{appointment.date}</h5>
-                        <h5>{appointment.hour}</h5>
+                        <h5>{{appointment.date}}</h5>
+                        <h5>{{appointment.hour}}</h5>
                       </td>
                     </tr>
                   </table>
