@@ -8,9 +8,10 @@ class Doctor extends Model {
         last_name: DataTypes.STRING,
         phone_number: DataTypes.STRING,
         mail: DataTypes.STRING,
-        adress: DataTypes.STRING,
+        address: DataTypes.STRING,
         zip_code: DataTypes.STRING,
         city: DataTypes.STRING,
+        speciality: DataTypes.STRING,
       },
       {
         sequelize,
@@ -26,4 +27,4 @@ class Doctor extends Model {
   }
 }
 
-module.exports = Doctor
+module.exports = Doctor;
