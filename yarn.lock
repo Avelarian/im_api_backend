@@ -20,6 +20,11 @@ accepts@~1.3.7:
     mime-types "~2.1.24"
     negotiator "0.6.2"
 
+addressparser@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/addressparser/-/addressparser-1.0.0.tgz#8a08575430014976686aa1b76e0c74c5a7702a3e"
+  integrity sha1-ighXVDABSXZoaqG3bgx0xadwKj4=
+
 ajv@^6.12.3:
   version "6.12.6"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
@@ -150,6 +155,18 @@ brace-expansion@^1.1.7:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
 
+buildmail@3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/buildmail/-/buildmail-3.3.2.tgz#7c9e290d42a8580894af35281bcc6de83dfe121c"
+  integrity sha1-fJ4pDUKoWAiUrzUoG8xt6D3+Ehw=
+  dependencies:
+    addressparser "1.0.0"
+    libbase64 "0.1.0"
+    libmime "2.0.0"
+    libqp "1.1.0"
+    nodemailer-fetch "1.2.1"
+    nodemailer-shared "1.0.3"
+
 bytes@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.1.0.tgz#f6cf7933a360e0588fa9fde85651cdc7f805d1f6"
@@ -190,6 +207,11 @@ cliui@^5.0.0:
     string-width "^3.1.0"
     strip-ansi "^5.2.0"
     wrap-ansi "^5.1.0"
+
+clone@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.2.tgz#260b7a99ebb1edfe247538175f783243cb19d149"
+  integrity sha1-Jgt6meux7f4kdTgXX3gyQ8sZ0Uk=
 
 code-point-at@^1.0.0:
   version "1.1.0"
@@ -494,6 +516,11 @@ extsprintf@^1.2.0:
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
   integrity sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
 
+faker@^5.5.3:
+  version "5.5.3"
+  resolved "https://registry.yarnpkg.com/faker/-/faker-5.5.3.tgz#c57974ee484431b25205c2c8dc09fda861e51e0e"
+  integrity sha512-wLTv2a28wjUyWkbnX7u/ABZBkUkIF2fCd73V6P2oFqEGEktDfzWx4UxrSqtPRw0xPRAcjeAOIiJWqZm3pP4u3g==
+
 fast-deep-equal@^3.1.1:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
@@ -683,6 +710,11 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
+iconv-lite@0.4.13:
+  version "0.4.13"
+  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.13.tgz#1f88aba4ab0b1508e8312acc39345f36e992e2f2"
+  integrity sha1-H4irpKsLFQjoMSrMOTRfNumS4vI=
+
 iconv-lite@0.4.24, iconv-lite@^0.4.4:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
@@ -822,6 +854,25 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
+libbase64@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/libbase64/-/libbase64-0.1.0.tgz#62351a839563ac5ff5bd26f12f60e9830bb751e6"
+  integrity sha1-YjUag5VjrF/1vSbxL2Dpgwu3UeY=
+
+libmime@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/libmime/-/libmime-2.0.0.tgz#a17a68dc4fa2830bb6499eb1da35099676c8c724"
+  integrity sha1-oXpo3E+igwu2SZ6x2jUJlnbIxyQ=
+  dependencies:
+    iconv-lite "0.4.13"
+    libbase64 "0.1.0"
+    libqp "1.1.0"
+
+libqp@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/libqp/-/libqp-1.1.0.tgz#f5e6e06ad74b794fb5b5b66988bf728ef1dedbe8"
+  integrity sha1-9ebgatdLeU+1tbZpiL9yjvHe2+g=
+
 locate-path@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-3.0.0.tgz#dbec3b3ab759758071b58fe59fc41871af21400e"
@@ -856,6 +907,14 @@ lru-queue@^0.1.0:
   integrity sha1-Jzi9nw089PhEkMVzbEhpmsYyzaM=
   dependencies:
     es5-ext "~0.10.2"
+
+mailcomposer@3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/mailcomposer/-/mailcomposer-3.3.2.tgz#205523cc872edfd50ec80a7517549e0b1bae834d"
+  integrity sha1-IFUjzIcu39UOyAp1F1SeCxuug00=
+  dependencies:
+    buildmail "3.3.2"
+    libmime "2.0.0"
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -1042,10 +1101,62 @@ node-pre-gyp@^0.11.0:
     semver "^5.3.0"
     tar "^4"
 
-nodemailer@^6.6.0:
-  version "6.6.0"
-  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.6.0.tgz#ed47bb572b48d9d0dca3913fdc156203f438f427"
-  integrity sha512-ikSMDU1nZqpo2WUPE0wTTw/NGGImTkwpJKDIFPZT+YvvR9Sj+ze5wzu95JHkBMglQLoG2ITxU21WukCC/XsFkg==
+nodemailer-direct-transport@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/nodemailer-direct-transport/-/nodemailer-direct-transport-2.0.1.tgz#a9c6f49a1cffffce05de368f389a2398ff93ccb3"
+  integrity sha1-qcb0mhz//84F3jaPOJojmP+TzLM=
+  dependencies:
+    nodemailer-shared "1.0.3"
+    smtp-connection "2.0.1"
+
+nodemailer-fetch@1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/nodemailer-fetch/-/nodemailer-fetch-1.2.1.tgz#efc18cec205b4ff051d205873d79064ad18509e3"
+  integrity sha1-78GM7CBbT/BR0gWHPXkGStGFCeM=
+
+nodemailer-shared@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/nodemailer-shared/-/nodemailer-shared-1.0.3.tgz#f7d65ff72c029d8f1dd8a68b8011862192dca200"
+  integrity sha1-99Zf9ywCnY8d2KaLgBGGIZLcogA=
+  dependencies:
+    nodemailer-fetch "1.2.1"
+
+nodemailer-smtp-pool@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/nodemailer-smtp-pool/-/nodemailer-smtp-pool-2.1.0.tgz#367d74fe9c89f129c99d7ba16e726a6befaeecc8"
+  integrity sha1-Nn10/pyJ8SnJnXuhbnJqa++u7Mg=
+  dependencies:
+    clone "1.0.2"
+    nodemailer-shared "1.0.3"
+    nodemailer-wellknown "0.1.7"
+    smtp-connection "2.0.1"
+
+nodemailer-smtp-transport@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/nodemailer-smtp-transport/-/nodemailer-smtp-transport-2.0.1.tgz#299aae9450a90318c348fad2736ea28481544466"
+  integrity sha1-KZqulFCpAxjDSPrSc26ihIFURGY=
+  dependencies:
+    clone "1.0.2"
+    nodemailer-shared "1.0.3"
+    nodemailer-wellknown "0.1.7"
+    smtp-connection "2.0.1"
+
+nodemailer-wellknown@0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/nodemailer-wellknown/-/nodemailer-wellknown-0.1.7.tgz#aa641990a99fa80a9da8a23562905477cceee55f"
+  integrity sha1-qmQZkKmfqAqdqKI1YpBUd8zu5V8=
+
+nodemailer@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-2.1.0.tgz#cf10adfde6e5c1f10bea970071abd9e83a09d3f4"
+  integrity sha1-zxCt/eblwfEL6pcAcavZ6DoJ0/Q=
+  dependencies:
+    libmime "2.0.0"
+    mailcomposer "3.3.2"
+    nodemailer-direct-transport "2.0.1"
+    nodemailer-shared "1.0.3"
+    nodemailer-smtp-pool "2.1.0"
+    nodemailer-smtp-transport "2.0.1"
 
 "nopt@2 || 3":
   version "3.0.6"
@@ -1457,6 +1568,13 @@ signal-exit@^3.0.0:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.3.tgz#a1410c2edd8f077b08b4e253c8eacfcaf057461c"
   integrity sha512-VUJ49FC8U1OxwZLxIbTTrDvLnf/6TDgxZcK8wxR8zs13xpx7xbG60ndBlhNrFi2EMuFRoeDoJO7wthSLq42EjA==
+
+smtp-connection@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/smtp-connection/-/smtp-connection-2.0.1.tgz#e6928fe3866b436a7c607b591dae99d9a0745981"
+  integrity sha1-5pKP44ZrQ2p8YHtZHa6Z2aB0WYE=
+  dependencies:
+    nodemailer-shared "1.0.3"
 
 sqlite3@^5.0.2:
   version "5.0.2"
