@@ -80,3 +80,45 @@ describe("Test VerifyObjectKeys of utils ", () => {
     expect(result).toBe(true);
   });
 });
+
+describe("Test prepareObjectData of utils ", () => {
+  
+  it("Check if the trim is ok", () => {
+    const result = utils.prepareObjectData({
+      nom1: "MonNom",
+      nom2: "       MonNom          ",
+      nom3: "       MonNom",
+      nom4: "MonNom        ",
+      nom5: " Mon    Nom ",
+      nom6: "Mon    Nom",
+      nom7: "Mon Nom",
+      nom8: "",
+      nom9: null,
+      nom10: undefined,
+    });
+    expect(result).toEqual({
+      nom1: "MonNom",
+      nom2: "MonNom",
+      nom3: "MonNom",
+      nom4: "MonNom",
+      nom5: "Mon    Nom",
+      nom6: "Mon    Nom",
+      nom7: "Mon Nom",
+    });
+  });
+
+  it("Check if object other than string are copied", () => {
+    const result = utils.prepareObjectData({
+      nom1: true,
+      nom2: false,
+      nom3: 666,
+      nom4: {},
+    });
+    expect(result).toEqual({
+      nom1: true,
+      nom2: false,
+      nom3: 666,
+      nom4: {},
+    });
+  });
+});
