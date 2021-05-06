@@ -10,7 +10,8 @@
     "migration:rollback": "npx sequelize-cli db:migrate:undo:all",
     "seeds:run": "npx sequelize-cli db:seed:all",
     "seeds:generate": "npx sequelize-cli seed:generate --name",
-    "seeds:rollback": "npx sequelize-cli db:seed:undo:all"
+    "seeds:rollback": "npx sequelize-cli db:seed:undo:all",
+    "lint": "eslint ./"
   },
   "dependencies": {
     "cors": "^2.8.5",
