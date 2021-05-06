@@ -25,6 +25,9 @@ function verifyId(id) {
 }
 
 function verifyKey(key) {
+  if (typeof key === "boolean") {
+    return true
+  }
   if (!key) {
     return false;
   }
