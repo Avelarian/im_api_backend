@@ -66,4 +66,5 @@ module.exports = {
   down: (queryInterface, _Sequelize) => {
     return queryInterface.bulkDelete("doctors", null, {});
   },
+  doctors,
 };

@@ -8,13 +8,14 @@
     "migration:run": "npx sequelize-cli db:migrate",
     "migration:generate": "npx sequelize-cli migration:generate",
     "migration:rollback": "npx sequelize-cli db:migrate:undo:all",
-    "seeds:run": "npx sequelize-cli db:seed:all",
-    "seeds:generate": "npx sequelize-cli seed:generate --name",
-    "seeds:rollback": "npx sequelize-cli db:seed:undo:all",
+    "seed:run": "npx sequelize-cli db:seed:all",
+    "seed:generate": "npx sequelize-cli seed:generate --name",
+    "seed:rollback": "npx sequelize-cli db:seed:undo:all",
     "test": "jest"
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "elasticsearch": "^16.7.2",
     "express": "^4.17.1",
     "faker": "^5.5.3",
     "mustache": "^4.2.0",
