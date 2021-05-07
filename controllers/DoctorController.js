@@ -1,59 +1,37 @@
-
-const doctor = require('../models/Doctor')
-
+const Doctor = require("../models/Doctor");
+const utils = require("../utils");
 
 module.exports = {
-    // List all doctors.
-    async list(request, response) {
-        const doctors = await Doctor.findAll()
-        .catch((error) => {
-            return res.status(500).json({
-                error_point: 'Doctors list.',
-                message: 'Error trying to list  doctors.',
-                error: error,
-            });
-        });
-        
-        return res.status(200).json({
-            message: 'Doctors listed!',
-            list_doctors: doctors,
-        });
-    },
+  async list(_request, response) {
+    const doctors = await Doctor.findAll().catch((error) => {
+      console.log(error);
+      return response.status(500).json({
+        message:
+          "We could not load the data. Please, try again later.",
+      });
+    });
 
-      // Get one Doctor.
-      async index(request, response) {
-        const {id} = request.params;
+    return response.status(200).json(doctors);
+  },
+  async index(request, response) {
+    const { id } = request.params;
+      
+    if (!utils.verifyId(id)) {
+      return response
+        .status(401)
+        .json({ message: "The id sent is not valid." });
+    }
 
-        if(typeof(id === Number)){
-            const doctor = await Doctor.findByPk(id)
-        .catch((error) => {
-            return res.status(500).json({
-                error_point: 'Doctor index.',
-                message: 'Error trying to get a doctor.',
-                error: error,
-            });
+    Doctor.findByPk(id).then((doctor) => {
+      return response.status(200).json(doctor)
+    }).catch(error => {
+      console.log(error)
+      return response
+        .status(500)
+        .json({
+          message:
+            "We could not load the doctor details. Please, try again later.",
         });
-        }else{
-            return res.status(500).json({
-                error_point: 'Doctor index.',
-                message: 'undefined id',
-                error: error,
-            });
-        }
-        
-
-      // Error for accesing the database.
-
-        if (!doctor) {
-            return res.status(400).json({
-                error_point: 'Doctor index.',
-                message: 'Doctor not found.'
-            });
-        } // Checking if Doctor exists.
-        
-        return res.status(200).json({
-            message: 'Doctor found!',
-            doct_point: doctor,
-        });
-    },
-}
+    })
+  },
+};

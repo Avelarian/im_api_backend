@@ -39,7 +39,7 @@ routes.get('/doctors', DoctorController.list);
  * In DoctorController file, it will find index() function that searchs one single doctor
  * by his Primary Key
  */
-routes.get('/doctors', DoctorController.index);
+routes.get("/doctors/:id", DoctorController.index);
 
 
 module.exports = routes
