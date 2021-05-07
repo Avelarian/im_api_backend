@@ -51,12 +51,10 @@ function prepareObjectData(object) {
   let newObject = {};
   const keys = Object.keys(object);
   for (const key of keys) {
-    if (object[key] && typeof object[key] === "string") {
-      newObject = {
-        ...newObject,
-        [key]: object[key].trim(),
-      };
-    }
+    newObject = {
+      ...newObject,
+      [key]: object[key] && typeof object[key] === 'string' ? object[key].trim() : object[key],
+    };
   }
   return newObject;
 }
