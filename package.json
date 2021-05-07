@@ -10,7 +10,8 @@
     "migration:rollback": "npx sequelize-cli db:migrate:undo:all",
     "seeds:run": "npx sequelize-cli db:seed:all",
     "seeds:generate": "npx sequelize-cli seed:generate --name",
-    "seeds:rollback": "npx sequelize-cli db:seed:undo:all"
+    "seeds:rollback": "npx sequelize-cli db:seed:undo:all",
+    "test": "jest"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -22,6 +23,7 @@
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {
+    "jest": "^26.6.3",
     "sequelize-cli": "^6.2.0"
   }
 }
