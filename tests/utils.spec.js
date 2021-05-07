@@ -5,18 +5,22 @@ describe("Test VerifyId of utils ", () => {
     const result = utils.verifyId(null);
     expect(result).toBe(false);
   });
+
   it("Check if undefined id give false", () => {
     const result = utils.verifyId(undefined);
     expect(result).toBe(false);
   });
+
   it("Check if id which is not a string give false", () => {
     const result = utils.verifyId(12);
     expect(result).toBe(false);
   });
+
   it("Check if a not a number id give false", () => {
     const result = utils.verifyId("invalidId99");
     expect(result).toBe(false);
   });
+  
   it("Check if number id give true", () => {
     const result = utils.verifyId("12");
     expect(result).toBe(true);
@@ -75,6 +79,7 @@ describe("Test VerifyObjectKeys of utils ", () => {
     const result = utils.verifyObjectKeys({ mail: "mail@i" });
     expect(result).toBe(false);
   });
+
   it("Check if mail is valid", () => {
     const result = utils.verifyObjectKeys({ mail: "mail@gmail.com" });
     expect(result).toBe(true);
@@ -82,7 +87,6 @@ describe("Test VerifyObjectKeys of utils ", () => {
 });
 
 describe("Test prepareObjectData of utils ", () => {
-  
   it("Check if the trim is ok", () => {
     const result = utils.prepareObjectData({
       nom1: "MonNom",
@@ -92,7 +96,7 @@ describe("Test prepareObjectData of utils ", () => {
       nom5: " Mon    Nom ",
       nom6: "Mon    Nom",
       nom7: "Mon Nom",
-      nom8: "",
+      nom8: "   ",
       nom9: null,
       nom10: undefined,
     });
@@ -104,6 +108,9 @@ describe("Test prepareObjectData of utils ", () => {
       nom5: "Mon    Nom",
       nom6: "Mon    Nom",
       nom7: "Mon Nom",
+      nom8: "",
+      nom9: null,
+      nom10: undefined,
     });
   });
 
