@@ -24,14 +24,14 @@ function verifyId(id) {
   return true;
 }
 
-function verifyKey(key) {
-  if (typeof key === "boolean") {
-    return true
+function verifyKey(key, value) {
+  if (typeof value === "boolean") {
+    return true;
   }
-  if (!key) {
+  if (key === "mail" && !EMAIL_REGEX.test(value)) {
     return false;
   }
-  if (key === "mail" && !EMAIL_REGEX.test(key)) {
+  if (!value) {
     return false;
   }
   return true;
@@ -40,7 +40,7 @@ function verifyKey(key) {
 function verifyObjectKeys(object) {
   const keys = Object.keys(object);
   for (const key of keys) {
-    if (!verifyKey(object[key])) {
+    if (!verifyKey(key, object[key])) {
       return false;
     }
   }
