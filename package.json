@@ -11,7 +11,7 @@
     "seeds:run": "npx sequelize-cli db:seed:all",
     "seeds:generate": "npx sequelize-cli seed:generate --name",
     "seeds:rollback": "npx sequelize-cli db:seed:undo:all",
-     "test": "jest"
+    "test": "jest"
   },
   "dependencies": {
     "cors": "^2.8.5",
