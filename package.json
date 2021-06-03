@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "node --trace-warnings index.js",
+    "start": "node index.js",
     "migration:run": "npx sequelize-cli db:migrate",
     "migration:generate": "npx sequelize-cli migration:generate",
     "migration:rollback": "npx sequelize-cli db:migrate:undo:all",
