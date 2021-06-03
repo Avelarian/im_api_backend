@@ -10,7 +10,7 @@ const date = () => {
   };
 };
 
-const appointments = [...Array(100)].map((appointment, index) => {
+const appointments = [...Array(1000)].map((appointment, index) => {
   const { day, month, year, time } = date();
   return {
     id: index + 1,

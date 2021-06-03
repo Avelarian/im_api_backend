@@ -9,8 +9,8 @@ doctorsClient.clearObjects().then(() => {
 
 doctorsClient
   .saveObjects(doctors, { autoGenerateObjectIDIfNotExist: true })
-  .then(() => {
-    console.log('Added 100 doctor objects to Algolia.');
+  .then(({ objectIDs }) => {
+    console.log(`Added ${objectIDs.length} doctor objects to Algolia.`);
   })
   .catch((err) => {
     console.log(err);

@@ -37,7 +37,7 @@ const doctors = [
     created_at: new Date(),
     updated_at: new Date(),
   },
-  ...Array(99),
+  ...Array(499),
 ].map((doctor, index) => {
   if (index !== 0) {
     return {
