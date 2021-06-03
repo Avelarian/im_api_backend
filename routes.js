@@ -2,7 +2,7 @@
 const express = require("express");
 
 const DoctorAppointmentsController = require("./controllers/DoctorAppointmentsController");
-const client = require("./config/search-engine");
+const client = require("./engines");
 
 const routes = express.Router();
 
@@ -11,14 +11,14 @@ const routes = express.Router();
  * The DoctorController.js implements functions to:
  * List all doctors,one doctor and checks if there has been error find data in database
  */
-const DoctorController = require('./controllers/DoctorController');
+const DoctorController = require("./controllers/DoctorController");
 
 /**
- * This route receives HTTP Get Request 
+ * This route receives HTTP Get Request
  * and returns Response to the "/" path
  */
 routes.get("/", (_request, response) => {
-  return response.status(200).send('Service Available');
+  return response.status(200).send("Service Available");
 });
 
 /** DOCTOR ROUTES */
@@ -31,8 +31,7 @@ routes.post("/doctors/:id/appointments", DoctorAppointmentsController.store);
  * In DoctorController file, it will find list() function that searchs one single doctor
  * by his Primary Key
  */
-routes.get('/doctors', DoctorController.list);
-
+routes.get("/doctors", DoctorController.list);
 
 /**
  * This route will find one single doctor data in database
@@ -42,27 +41,21 @@ routes.get('/doctors', DoctorController.list);
  */
 routes.get("/doctors/:id", DoctorController.index);
 
-routes.get("/doctors/search", (request, response) => {
+routes.post("/doctors/search", (request, response) => {
   const { address, zip_code, city, speciality } = request.body;
+  console.log(speciality);
 
   const body = {
-    size: 100,
-    from: 0,
     query: {
-      match: {
-        address,
-        zip_code,
-        city,
-        speciality,
-      },
+      match_all: {},
     },
   };
 
   client
-    .search({ index: "doctors", body })
+    .search({ index: "doctors", from: 0, size: 100, body })
     .then((results) => {
       console.log(results);
-      return response.status(200).json(results.hits.hits);
+      return response.status(200).json(results.hits.hits.map((hit) => hit));
     })
     .catch((error) => {
       console.log(error);
@@ -72,5 +65,4 @@ routes.get("/doctors/search", (request, response) => {
     });
 });
 
-
-module.exports = routes
+module.exports = routes;
