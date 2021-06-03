@@ -46,7 +46,7 @@ const doctors = [
       last_name: faker.name.lastName(),
       phone_number: faker.phone.phoneNumber(),
       mail: faker.internet.email(),
-      address: faker.address.streetName(),
+      address: faker.address.streetAddress(),
       zip_code: faker.address.zipCode(),
       city: faker.address.city(),
       speciality: specialities[Math.floor(Math.random() * 19)],
@@ -66,4 +66,5 @@ module.exports = {
   down: (queryInterface, _Sequelize) => {
     return queryInterface.bulkDelete("doctors", null, {});
   },
+  doctors,
 };
