@@ -13,7 +13,7 @@ app.use(routes);
 
 connection.sync();
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`Service is available on port ${port}`);
 });
 
