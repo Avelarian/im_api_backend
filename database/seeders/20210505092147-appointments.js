@@ -14,7 +14,7 @@ const appointments = [...Array(1000)].map((appointment, index) => {
   const { day, month, year, time } = date();
   return {
     id: index + 1,
-    doctor_id: index + 1,
+    doctor_id: Math.floor(Math.random() * 499) + 1,
     day,
     month,
     year,
