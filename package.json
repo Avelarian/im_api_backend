@@ -14,8 +14,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "algoliasearch": "^4.9.1",
     "cors": "^2.8.5",
-    "elasticsearch": "^16.7.2",
     "express": "^4.17.1",
     "faker": "^5.5.3",
     "mustache": "^4.2.0",

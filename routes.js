@@ -2,7 +2,7 @@
 const express = require("express");
 
 const DoctorAppointmentsController = require("./controllers/DoctorAppointmentsController");
-const client = require("./engines");
+const { doctorsClient } = require("./engines");
 
 const routes = express.Router();
 
@@ -42,20 +42,14 @@ routes.get("/doctors", DoctorController.list);
 routes.get("/doctors/:id", DoctorController.index);
 
 routes.post("/doctors/search", (request, response) => {
-  const { address, zip_code, city, speciality } = request.body;
-  console.log(speciality);
+  const { searchTerm } = request.body;
 
-  const body = {
-    query: {
-      match_all: {},
-    },
-  };
-
-  client
-    .search({ index: "doctors", from: 0, size: 100, body })
-    .then((results) => {
-      console.log(results);
-      return response.status(200).json(results.hits.hits.map((hit) => hit));
+  doctorsClient
+    .search(searchTerm, {
+      hitsPerPage: 100,
+    })
+    .then(({ hits }) => {
+      return response.status(200).json(hits);
     })
     .catch((error) => {
       console.log(error);
